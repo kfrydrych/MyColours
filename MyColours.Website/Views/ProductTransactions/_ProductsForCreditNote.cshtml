@@ -1,0 +1,58 @@
+﻿@model IEnumerable<MyColours.Website.Core.ViewModels.Products.TransactionLineModel>
+
+<table id="tbl-creditNote-products" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductManufacturerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductProductTypeName)
+            </th>
+            <th>
+                <text>Return</text><br />
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="js-productId">@Html.DisplayFor(modelItem => item.ProductId)</div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductManufacturerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductProductTypeName)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Quantity, new { @class = "form-control table-sm-input js-quantity" })
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Price, new { @class = "form-control table-md-input js-price", @readonly = "readonly" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

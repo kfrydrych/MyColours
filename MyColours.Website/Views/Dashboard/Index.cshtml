@@ -1,0 +1,23 @@
+﻿@model MyColours.Website.Core.ViewModels.Products.DashboardModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dashboard</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        @Html.Partial("_LowStockColours", Model.LowStockColours)
+    </div>
+    <div class="col-md-6">
+        @Html.Partial("_NoStockColours", Model.NoStockColours)
+    </div>
+</div>
+
+
+
+

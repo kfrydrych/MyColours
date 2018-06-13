@@ -1,0 +1,104 @@
+﻿@model MyColours.Website.Core.ViewModels.Products.CreditNoteFormViewModel
+
+@{
+    ViewBag.Title = "Credit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Credit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(model => model.TransactionId)
+
+    <div>
+        <h4>Transaction Credit Note</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TransactionTypeName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TransactionTypeName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.PurchaseDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.PurchaseDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TransactionDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TransactionDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InvoiceNumber)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.InvoiceNumber)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.InvoiceValue)
+                    </dt>
+                    <dd id="InvoiceValue">
+                        @Html.DisplayFor(model => model.InvoiceValue)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col-md-6">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CreditNoteNumber, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.CreditNoteNumber, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.CreditNoteNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CreditNoteValue, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.CreditNoteValue, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.CreditNoteValue, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Balance, htmlAttributes: new { @class = "control-label col-md-6" })
+                        <div class="col-md-6">
+                            @Html.EditorFor(model => model.Balance, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Balance, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Html.Partial("_ProductsForCreditNote", Model.Products)
+
+    </div>
+    <br />
+    <input type="submit" value="Submit" class="btn btn-default" />
+    <br />
+    <br />
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/App/Products/ProductCreditNote.js"></script>
+}

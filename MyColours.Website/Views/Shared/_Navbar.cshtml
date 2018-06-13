@@ -1,0 +1,10 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+        <li>@Html.ActionLink("Products", "Index", "Products")</li>
+        <li>@Html.ActionLink("Transactions", "Index", "ProductTransactions")</li>
+        <li>@Html.ActionLink("Register New User", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+    </ul>
+}

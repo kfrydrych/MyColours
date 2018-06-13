@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MyColours.Website.Core.ViewModels.Products.ProductViewModel>
+
+<table id="tbl-products" class="table table-hover js-dataTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManufacturerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductTypeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <div class="js-productId">@Html.DisplayFor(modelItem => item.Id)</div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductTypeName)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    <input type="text" class="form-control table-sm-input js-quantity" />
+                </td>
+                <td>
+                    @Html.EditorFor(modelItem => item.Price, new { htmlAttributes = new { @class = "form-control table-md-input js-price" } })
+                </td>
+                <td>
+                    <button data-product-Id="@item.Id" class="btn btn-info js-addToBasket">Add</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

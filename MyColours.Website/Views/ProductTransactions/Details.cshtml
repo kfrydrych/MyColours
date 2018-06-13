@@ -1,0 +1,61 @@
+﻿@model MyColours.Website.Core.ViewModels.Products.TransactionDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Transaction - @Html.DisplayFor(model => model.InvoiceNumber)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionTypeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PurchaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PurchaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransactionDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransactionDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceValue)
+        </dd>
+
+    </dl>
+
+    @Html.Partial("_ProductsForTransactionDetails", Model.Products)
+
+</div>
+<p>
+    @Html.ActionLink("Credit Note", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
